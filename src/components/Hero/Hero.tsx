@@ -2,12 +2,9 @@ import { BrowserRouter } from "react-router-dom"
 import { Container } from "./styles"
 import ScrollAnimation from "react-animate-on-scroll"
 import Illustration from "../../assets/illustration.svg"
-import { NavHashLink } from "react-router-hash-link"
-import githubIcon from '../../assets/github.svg'
-import whatsapp from '../../assets/whatsapp.svg'
-import Hello from '../../assets/Hello.gif'
-import telegram from '../../assets/telegram.svg'
-import instagramIcon from '../../assets/instagram.svg'
+import { HashLink } from "react-router-hash-link"
+import Hello from '../../assets/Hello.svg'
+import resume from "../../assets/Shubham_Singh_Resume.pdf"
 
 export function Hero() {
   return (
@@ -27,29 +24,14 @@ export function Hero() {
         </ScrollAnimation>
         <ScrollAnimation animateIn="fadeInUp" delay={0.8 * 1000}>
           <BrowserRouter>
-            <NavHashLink smooth to="#contact" className="button">Contact</NavHashLink>
+            <HashLink smooth to="#contact" className="button">Contact</HashLink>
+            <a href={resume} download="Shubham_Singh_Resume.pdf" className="button" style={{marginLeft: '1rem'}}>Resume</a>
           </BrowserRouter>
-        </ScrollAnimation>
-        <ScrollAnimation animateIn="fadeInUp" delay={1 * 1000}>
-      <div className="social-media">
-        <a href="https://github.com/Shubhams872-spec" target="_blank" rel="noreferrer">
-          <img src={githubIcon} alt="GitHub" />
-        </a>
-        <a href="https://api.whatsapp.com/send/?phone=%2B919415181609&text=Hello+Shubham+I+found+your+contact+through+your+portfolio." target="_blank" rel="noreferrer">
-          <img src={whatsapp} alt="Whatsapp" />
-        </a>
-        <a href="https://t.me/Shubhams872" target="_blank" rel="noreferrer">
-          <img src={telegram} alt="telegram" />
-        </a>
-        <a href="https://www.instagram.com/Shubham.zenith_/" target="_blank" rel="noreferrer">
-          <img src={instagramIcon} alt="Instagram" />
-        </a>
-      </div>
         </ScrollAnimation>
       </div>
       <div className="hero-image">
         <ScrollAnimation animateIn="fadeInRight" delay={1 * 1000}>
-          <img src={Illustration} alt="Shubham Singh Developer Illustration" />
+          <img src={Illustration} alt="Illustration" />
         </ScrollAnimation>
       </div>
     </Container>
