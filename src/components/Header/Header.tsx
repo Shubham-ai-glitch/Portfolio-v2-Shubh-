@@ -1,59 +1,29 @@
 import { Container } from './styles'
-import { BrowserRouter as Router } from 'react-router-dom'
-import { NavHashLink, HashLink } from 'react-router-hash-link'
+import { BrowserRouter } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link'
 import { useState } from 'react'
-import Resume from '../../assets/Vinayak_Singh_Resume.pdf'
+
 export function Header() {
   const [isActive, setActive] = useState(false)
-  function toggleTheme() {
-    let html = document.getElementsByTagName('html')[0]
-    html.classList.toggle('light')
-  }
-  function closeMenu() {
-    setActive(false)
-  }
+  function toggleActive() { setActive(!isActive) }
+  function closeMenu() { setActive(false) }
+
   return (
     <Container className="header-fixed">
-      <Router>
+      <BrowserRouter>
         <HashLink smooth to="#home" className="logo">
-          <span>{"<Vinayak "}</span>
+          <span>{"<Shubham "}</span>
           <span>{" Singh/>"}</span>
         </HashLink>
-        <input
-          onChange={toggleTheme}
-          className="container_toggle"
-          type="checkbox"
-          id="switch"
-          name="mode"
-        />
-        <label htmlFor="switch">Toggle</label>
         <nav className={isActive ? 'active' : ''}>
-          <NavHashLink smooth to="#home" onClick={closeMenu}>
-            Home
-          </NavHashLink>
-          <NavHashLink smooth to="#about" onClick={closeMenu}>
-            About me
-          </NavHashLink>
-          <NavHashLink smooth to="#project" onClick={closeMenu}>
-            Project
-          </NavHashLink>
-          <NavHashLink smooth to="#contact" onClick={closeMenu}>
-            Contact
-          </NavHashLink>
-          <a href={Resume} download className="button">
-            Resume
-          </a>
+          <HashLink smooth to="#home" onClick={closeMenu}>Home</HashLink>
+          <HashLink smooth to="#about" onClick={closeMenu}>About Me</HashLink>
+          <HashLink smooth to="#project" onClick={closeMenu}>Project</HashLink>
+          <HashLink smooth to="#contact" onClick={closeMenu}>Contact</HashLink>
+          <a href="https://ig.me/m/Shubham.zenith_?text=Hi%20Shubham,%20I%20reached%20you%20through%20your%20portfolio!" target="_blank" rel="noreferrer" className="button">Instagram</a>
         </nav>
-        <div
-          aria-expanded={isActive ? 'true' : 'false'}
-          aria-haspopup="true"
-          aria-label={isActive ? 'Fechar menu' : 'Abrir menu'}
-          className={isActive ? 'menu active' : 'menu'}
-          onClick={() => {
-            setActive(!isActive)
-          }}
-        ></div>
-      </Router>
+        <div aria-expanded={isActive} className={isActive ? 'menu active' : 'menu'} onClick={toggleActive}></div>
+      </BrowserRouter>
     </Container>
   )
 }
