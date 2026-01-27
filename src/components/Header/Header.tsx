@@ -3,56 +3,31 @@ import { NavHashLink, HashLink } from 'react-router-hash-link'
 import { Container } from './styles'
 import { useState } from 'react'
 
-// Yahan 'export' ko function ke saath hi likho
 export function Header() {
   const [isActive, setActive] = useState(false)
-
-  function toggleActive() {
-    setActive(!isActive)
-  }
-
-  function closeMenu() {
-    setActive(false)
-  }
+  const toggleActive = () => setActive(!isActive)
+  const closeMenu = () => setActive(false)
 
   return (
     <Container className="header-fixed">
       <Router>
         <HashLink smooth to="#home" className="logo">
-          <span>S</span>
-          <span>Singh</span>
+          <span> Shubham</span>
+          <span> Singh</span>
         </HashLink>
 
-        <input
-          className="menu-btn"
-          type="checkbox"
-          id="menu-btn"
-          onClick={toggleActive}
-        />
+        <input className="menu-btn" type="checkbox" id="menu-btn" onClick={toggleActive} />
         <label className="menu-icon" htmlFor="menu-btn">
           <span className="navicon"></span>
         </label>
 
         <nav className={isActive ? 'active' : ''}>
-          <NavHashLink smooth to="#home" onClick={closeMenu}>
-            Home
-          </NavHashLink>
-          <NavHashLink smooth to="#about" onClick={closeMenu}>
-            About Me
-          </NavHashLink>
-          <NavHashLink smooth to="#project" onClick={closeMenu}>
-            Project
-          </NavHashLink>
-          <NavHashLink smooth to="#contact" onClick={closeMenu}>
-            Contact
-          </NavHashLink>
-          {/* Direct Google Drive Link */}
-          <a 
-            href="https://drive.google.com/file/d/1t-0UB9Lswk4KDu2El6-GO-0Swh90ZbAF/view?usp=drivesdk" 
-            target="_blank" 
-            rel="noreferrer" 
-            className="button"
-          >
+          <NavHashLink smooth to="#home" onClick={closeMenu}>Home</NavHashLink>
+          <NavHashLink smooth to="#about" onClick={closeMenu}>About Me</NavHashLink>
+          <NavHashLink smooth to="#project" onClick={closeMenu}>Project</NavHashLink>
+          <NavHashLink smooth to="#contact" onClick={closeMenu}>Contact</NavHashLink>
+          <a href="https://drive.google.com/file/d/1t-0UB9Lswk4KDu2El6-GO-0Swh90ZbAF/view?usp=drivesdk" 
+             target="_blank" rel="noreferrer" className="button">
             Resume
           </a>
         </nav>
