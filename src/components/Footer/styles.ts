@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const Container = styled.footer`
   background-color: #2b2b2b;
   padding: 3rem 15rem;
@@ -9,9 +8,10 @@ export const Container = styled.footer`
   align-items: center;
   justify-content: space-between;
 
-
   .logo{
     font-size: 2.8rem;
+    color: #fff; /* Logo visibility ke liye */
+    text-decoration: none;
   }
 
   p{
@@ -19,23 +19,28 @@ export const Container = styled.footer`
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    color: #fff;
     img{
       width: 2.6rem;
       animation: spinning 5s infinite linear;
     }
   }
+
   .social-media{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+    gap: 1.5rem; /* Icons ke beech ka gap */
 
-    img,span{
+    img, span{
       font-size: 3rem;
       width: 3rem;
+      transition: filter 0.3s;
+      
+      &:hover {
+        filter: brightness(0.8); /* Hover effect */
+      }
     }
   }
-
 
   @keyframes spinning {
     0%{
@@ -52,10 +57,14 @@ export const Container = styled.footer`
     gap: 2rem;
     text-align: center;
   }
+
   @media(max-width: 600px){
     padding: 4rem 1rem;
     p{
       font-size: 1.2rem;
+    }
+    .logo {
+      font-size: 2.2rem;
     }
   }
 `
