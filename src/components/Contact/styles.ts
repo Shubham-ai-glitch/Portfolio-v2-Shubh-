@@ -1,75 +1,35 @@
 import styled from "styled-components";
 
-
 export const Container = styled.section`
-  margin-top: 10rem;
-
-  header{
-    text-align: center;
-    h2{
-      text-align: center;
-      font-size: 4rem;
-    }
-    p{
-      color: var(--green);
-      font-weight: 500;
-    }
-  }
-
-  .contacts{
+  margin-top: 5rem;
+  .email-box {
+    background: var(--green);
+    padding: 1rem 2rem;
+    border-radius: 2rem;
     display: flex;
     align-items: center;
+    max-width: 450px;
+    margin: 3rem auto;
+    overflow: hidden;
+    a { word-break: break-all; font-size: 1.2rem; color: #000; font-weight: 600; margin-left: 1rem; }
+    img { width: 3rem; }
+  }
+  .social-links-container {
+    display: flex;
     justify-content: center;
-    gap: 2rem;
-    place-items: center;
-    margin-top: 1.5rem;
-    div{
+    gap: 3rem;
+    margin-bottom: 3rem;
+    img { width: 50px; transition: 0.3s; &:hover { transform: scale(1.2); } }
+  }
+  .small-form {
+    max-width: 350px;
+    margin: 0 auto;
+    form {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 50%;
-      max-width: 30rem;
-      gap: 2rem;
-      background-color: var(--green);
-      border-radius: 1.4rem;
-      padding: 1.6rem 2.8rem;
-      transition: background-color 0.25s;
-      img{
-        width: 4rem;
-      }
-      a{
-        color: var(--black);
-        font-weight: 500;
-      }
-      &:hover{
-        background-color: var(--pink);
-        a{
-          color: #FFF;
-        }
-      }
-    }
-  }
-
-
-  @media(max-width: 960px){
-    .contacts{
       flex-direction: column;
-      div{
-        width: 100%;
-        
-      }
+      gap: 1rem;
+      input, textarea { background: #1e1e1e; color: white; border: 1px solid var(--green); padding: 1rem; border-radius: 0.5rem; }
+      button { background: var(--green); color: black; font-weight: bold; padding: 0.8rem; border: none; border-radius: 0.5rem; cursor: pointer; }
     }
   }
-  
 `
-/* old one - 2/1/2023 - 
-@media(max-width: 960px){
-    .contacts{
-      flex-direction: column;
-      div{
-        width: 100%;
-        flex-direction: column;
-      }
-    }
-
-*/
