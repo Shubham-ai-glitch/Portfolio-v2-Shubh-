@@ -11,11 +11,7 @@ export function Footer() {
         <p>Made with 💀 by Shubham Singh</p>
       </div>
       <div className="social-media">
-        <a 
-          href="https://github.com/Shubhams872-spec" 
-          target="_blank" 
-          rel="noreferrer"
-        >
+        <a href="https://github.com/Shubhams872-spec" target="_blank" rel="noreferrer">
           <img src={githubIcon} alt="GitHub" />
         </a>
       </div>
