@@ -11,6 +11,7 @@ export function Header() {
   return (
     <Container className="header-fixed">
       <Router>
+        {/* Logo Purane Style Mein */}
         <HashLink smooth to="#home" className="logo">
           <span> Shubham</span>
           <span> Singh</span>
@@ -26,6 +27,7 @@ export function Header() {
           <NavHashLink smooth to="#about" onClick={closeMenu}>About Me</NavHashLink>
           <NavHashLink smooth to="#project" onClick={closeMenu}>Project</NavHashLink>
           <NavHashLink smooth to="#contact" onClick={closeMenu}>Contact</NavHashLink>
+          {/* Resume Link */}
           <a href="https://drive.google.com/file/d/1t-0UB9Lswk4KDu2El6-GO-0Swh90ZbAF/view?usp=drivesdk" 
              target="_blank" rel="noreferrer" className="button">
             Resume
