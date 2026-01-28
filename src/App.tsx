@@ -18,10 +18,9 @@ function App() {
   return (
     <>
       <GlobalStyle isDark={isDark} />
-      {/* Header ko theme function aur state bhej rahe hain */}
       <Header toggleTheme={toggleTheme} isDark={isDark} />
       
-      {/* ERROR YAHAN THA: Hero ko isDark state bhejni zaroori hai */}
+      {/* ERROR YAHAN THA: Humne Hero ko isDark={isDark} de diya hai */}
       <Hero isDark={isDark} />
       
       <About />
