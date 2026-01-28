@@ -6,11 +6,14 @@ import { About } from './components/About/About'
 import { Project } from './components/Project/Project'
 import { Contact } from './components/Contact/Contact'
 import { Footer } from './components/Footer/Footer'
-import { Music } from './components/Music/Music'
+import { Music } from './components/Music/Music' // Music import kiya
 
 function App() {
   const [isDark, setIsDark] = useState(true)
-  const toggleTheme = () => setIsDark(!isDark)
+
+  const toggleTheme = () => {
+    setIsDark(!isDark)
+  }
 
   return (
     <>
@@ -21,8 +24,9 @@ function App() {
       <Project />
       <Contact />
       <Footer />
-      <Music />
+      <Music /> {/* Music button yahan add kiya */}
     </>
   )
 }
+
 export default App
