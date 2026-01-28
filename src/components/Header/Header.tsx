@@ -1,39 +1,62 @@
-import { BrowserRouter as Router } from 'react-router-dom'
-import { NavHashLink, HashLink } from 'react-router-hash-link'
 import { Container } from './styles'
+import { NavHashLink, HashLink } from 'react-router-hash-link'
 import { useState } from 'react'
 
-export function Header() {
+// Ye interface batata hai ki Header ko toggle function aur theme state milegi
+interface HeaderProps {
+  toggleTheme: () => void;
+  isDark: boolean;
+}
+
+export function Header({ toggleTheme, isDark }: HeaderProps) {
   const [isActive, setActive] = useState(false)
-  const toggleActive = () => setActive(!isActive)
-  const closeMenu = () => setActive(false)
+
+  function toggleActive() {
+    setActive(!isActive)
+  }
+
+  function closeMenu() {
+    setActive(false)
+  }
 
   return (
     <Container className="header-fixed">
-      <Router>
-        {/* Logo Purane Style Mein */}
-        <HashLink smooth to="#home" className="logo">
-          <span> Shubham</span>
-          <span> Singh</span>
-        </HashLink>
+      <HashLink smooth to="#home" className="logo">
+        <span>S</span>
+        <span>hubham</span>
+      </HashLink>
 
-        <input className="menu-btn" type="checkbox" id="menu-btn" onClick={toggleActive} />
-        <label className="menu-icon" htmlFor="menu-btn">
-          <span className="navicon"></span>
-        </label>
+      <nav className={isActive ? 'active' : ''}>
+        <NavHashLink smooth to="#home" onClick={closeMenu}>Home</NavHashLink>
+        <NavHashLink smooth to="#about" onClick={closeMenu}>About me</NavHashLink>
+        <NavHashLink smooth to="#project" onClick={closeMenu}>Project</NavHashLink>
+        <NavHashLink smooth to="#contact" onClick={closeMenu}>Contact</NavHashLink>
+        
+        {/* Theme Toggle Button */}
+        <button onClick={toggleTheme} className="theme-button" style={{
+          background: 'none',
+          border: '1px solid var(--green)',
+          color: 'var(--green)',
+          padding: '0.5rem 1rem',
+          borderRadius: '2rem',
+          cursor: 'pointer',
+          marginLeft: '1rem'
+        }}>
+          {isDark ? '☀️ Light' : '🌙 Dark'}
+        </button>
 
-        <nav className={isActive ? 'active' : ''}>
-          <NavHashLink smooth to="#home" onClick={closeMenu}>Home</NavHashLink>
-          <NavHashLink smooth to="#about" onClick={closeMenu}>About Me</NavHashLink>
-          <NavHashLink smooth to="#project" onClick={closeMenu}>Project</NavHashLink>
-          <NavHashLink smooth to="#contact" onClick={closeMenu}>Contact</NavHashLink>
-          {/* Resume Link */}
-          <a href="https://drive.google.com/file/d/1t-0UB9Lswk4KDu2El6-GO-0Swh90ZbAF/view?usp=drivesdk" 
-             target="_blank" rel="noreferrer" className="button">
-            Resume
-          </a>
-        </nav>
-      </Router>
+        <a href="/Resume_Shubham.pdf" download className="button">
+          Resume
+        </a>
+      </nav>
+
+      <div
+        aria-expanded={isActive ? 'true' : 'false'}
+        aria-haspopup="true"
+        aria-label={isActive ? 'Fechar menu' : 'Abrir menu'}
+        className={isActive ? 'menu active' : 'menu'}
+        onClick={toggleActive}
+      ></div>
     </Container>
   )
 }
