@@ -20,7 +20,7 @@ function App() {
       <GlobalStyle isDark={isDark} />
       <Header toggleTheme={toggleTheme} isDark={isDark} />
       
-      {/* ERROR YAHAN THA: Humne Hero ko isDark={isDark} de diya hai */}
+      {/* Ye line fix karegi error ko */}
       <Hero isDark={isDark} />
       
       <About />
