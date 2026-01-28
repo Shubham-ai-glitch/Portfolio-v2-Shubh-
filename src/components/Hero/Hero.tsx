@@ -1,30 +1,42 @@
-import { Container } from "./styles"
+import React, { useEffect, useRef } from 'react'
+import { Container } from './styles'
 import ScrollAnimation from "react-animate-on-scroll"
-import githubIcon from '../../assets/github.svg'
-import instagramIcon from '../../assets/instagram.svg'
-import telegramIcon from '../../assets/telegram.svg'
 
-export function Hero() {
+export function Hero({ isDark }: { isDark: boolean }) {
+  const vantaRef = useRef<HTMLDivElement>(null)
+  const vantaInstance = useRef<any>(null)
+
+  useEffect(() => {
+    if (isDark && !vantaInstance.current && (window as any).VANTA) {
+      vantaInstance.current = (window as any).VANTA.BIRDS({
+        el: vantaRef.current,
+        mouseControls: true,
+        touchControls: true,
+        backgroundColor: 0x121212,
+        color1: 0x23ce6b,
+        color2: 0x1d1d1d,
+        birdSize: 1.5,
+        wingSpan: 30.0,
+      })
+    } else if (!isDark && vantaInstance.current) {
+      vantaInstance.current.destroy()
+      vantaInstance.current = null
+    }
+    return () => { if (vantaInstance.current) vantaInstance.current.destroy() }
+  }, [isDark])
+
   return (
-    <Container id="home">
+    <Container ref={vantaRef} id="home" style={{background: isDark ? 'transparent' : 'white'}}>
       <div className="hero-text">
         <ScrollAnimation animateIn="fadeInUp">
           <p>Hello, I'm</p>
+          <h1>Shubham Singh</h1>
+          <h3>Frontend Developer & NEET Aspirant</h3>
+          <div className="hero-buttons">
+            <a href="#contact" className="button">Contact</a>
+            <a href="/Resume_Shubham.pdf" download className="button">Resume</a>
+          </div>
         </ScrollAnimation>
-        <h1>Shubham Singh</h1>
-        <h3>Frontend Developer & Hacking Enthusiast</h3>
-        <p className="small-resume">11th Grade Student | NEET Aspirant | Kanpur</p>
-        <div className="social-media">
-          <a href="https://github.com/Shubhams872-spec" target="_blank" rel="noreferrer">
-            <img src={githubIcon} alt="GitHub" style={{width: '50px'}} />
-          </a>
-          <a href="https://www.instagram.com/Shubham.zenith_/" target="_blank" rel="noreferrer">
-            <img src={instagramIcon} alt="Instagram" style={{width: '50px'}} />
-          </a>
-          <a href="https://t.me/shubham_zenith" target="_blank" rel="noreferrer">
-            <img src={telegramIcon} alt="Telegram" style={{width: '50px'}} />
-          </a>
-        </div>
       </div>
     </Container>
   )
