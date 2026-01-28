@@ -1,4 +1,3 @@
-
 import { useState, useRef } from 'react'
 import styled from 'styled-components'
 
@@ -11,7 +10,7 @@ export function Music() {
       if (isPlaying) {
         audioRef.current.pause()
       } else {
-        audioRef.current.play().catch(() => alert("Pehle screen par kahin bhi click karein, phir music bajega!"))
+        audioRef.current.play().catch(() => alert("Click anywhere on the page first!"))
       }
       setIsPlaying(!isPlaying)
     }
@@ -19,37 +18,17 @@ export function Music() {
 
   return (
     <MusicBox>
-      <audio ref={audioRef} loop src="/assets/bg-music.mp3" />
-      <button onClick={toggleMusic} className={isPlaying ? 'playing' : ''}>
-        {isPlaying ? '🔇 Stop Music' : '🔊 Play Music'}
-      </button>
+      <audio ref={audioRef} loop src="/assets/bg-sound.mp3" />
+      <button onClick={toggleMusic}>{isPlaying ? '🔇 Stop Music' : '🔊 Play Music'}</button>
     </MusicBox>
   )
 }
 
 const MusicBox = styled.div`
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  z-index: 1000;
-
-  button {
-    background: #23ce6b;
-    color: black;
-    border: none;
-    padding: 1rem 1.5rem;
-    border-radius: 50px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: 0.3s;
-
-    &.playing {
-      background: #ffffff;
-    }
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 1000;
+  button { 
+    background: #23ce6b; border: none; padding: 0.8rem 1.2rem; 
+    border-radius: 50px; font-weight: bold; cursor: pointer; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   }
 `
